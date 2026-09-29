@@ -5,6 +5,7 @@
 */
 
 document.addEventListener('DOMContentLoaded', () => {
+  initActiveNavLinks();
   initCartSystem();
   initRestaurantFilters();
   initFoodDetailsCustomization();
@@ -553,3 +554,35 @@ function initBackToTop() {
     });
   });
 }
+
+/* ================================================================
+   8. ACTIVE NAVIGATION LINK SYNC
+   ================================================================ */
+function initActiveNavLinks() {
+  const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+
+  const mobileLinks = document.querySelectorAll('.mobile-nav-list a');
+  if (mobileLinks.length > 0) {
+    mobileLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      if (href === currentPath || (currentPath === '' && href === 'index.html')) {
+        link.classList.add('active');
+      } else if (href && !href.startsWith('#')) {
+        link.classList.remove('active');
+      }
+    });
+  }
+
+  const desktopLinks = document.querySelectorAll('.crave-nav-links a');
+  if (desktopLinks.length > 0) {
+    desktopLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      if (href === currentPath || (currentPath === '' && href === 'index.html')) {
+        link.classList.add('active');
+      } else if (href && !href.startsWith('#')) {
+        link.classList.remove('active');
+      }
+    });
+  }
+}
+
