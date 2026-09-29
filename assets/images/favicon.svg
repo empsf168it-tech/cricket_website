@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="cricketGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B3D2E"/>
+      <stop offset="100%" stop-color="#166534"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="url(#cricketGrad)"/>
+  <!-- Cricket Ball & Seam Icon -->
+  <circle cx="32" cy="32" r="18" fill="#FACC15" stroke="#FFFFFF" stroke-width="2"/>
+  <path d="M22 22 C28 28, 28 36, 22 42" fill="none" stroke="#0B3D2E" stroke-width="2" stroke-dasharray="2,2"/>
+  <path d="M42 22 C36 28, 36 36, 42 42" fill="none" stroke="#0B3D2E" stroke-width="2" stroke-dasharray="2,2"/>
+  <line x1="18" y1="18" x2="46" y2="46" stroke="#0B3D2E" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="27" cy="27" r="1.5" fill="#0B3D2E"/>
+  <circle cx="37" cy="37" r="1.5" fill="#0B3D2E"/>
+</svg>

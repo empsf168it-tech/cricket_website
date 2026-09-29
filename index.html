@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cricket — Live Scores, Match Schedules, Stats & Rankings</title>
+  <meta name="description" content="Experience hyper-fast cricket live scores, ball-by-ball commentary, tournament schedules, team rankings, player statistics, and match highlights on Cricket.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  
+  <!-- Bootstrap 5 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- ================================================================
+       HEADER & NAVIGATION
+       ================================================================ -->
+  <header class="crave-header">
+    <div class="container">
+      <nav class="crave-navbar">
+        <!-- Logo -->
+        <a href="index.html" class="brand-logo">
+          <div class="logo-icon">
+            <i class="bi bi-trophy-fill"></i>
+          </div>
+          <span>Cricket<span class="accent">Live</span></span>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <ul class="crave-nav-links crave-nav-links-desktop">
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="restaurants.html">Matches &amp; Hub</a></li>
+          <li><a href="food-details.html">Match Center</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+
+        <!-- Right Header Actions -->
+        <div class="header-actions">
+          <!-- Cart Icon Button (Match Passes) -->
+          <button class="cart-icon-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#cartOffcanvas" aria-label="View Match Passes">
+            <i class="bi bi-ticket-perforated-fill"></i>
+            <span class="cart-badge">2</span>
+          </button>
+
+          <!-- Live Score CTA -->
+          <a href="restaurants.html" class="btn-crave-primary d-none d-lg-inline-flex">
+            <span>Explore Matches</span>
+            <i class="bi bi-arrow-right-short fs-5"></i>
+          </a>
+
+          <!-- Mobile Hamburger Toggle (Right Aligned) -->
+          <button class="mobile-toggle-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileNavOffcanvas" aria-label="Toggle Navigation">
+            <i class="bi bi-list"></i>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Offcanvas Drawer -->
+  <div class="offcanvas offcanvas-end mobile-nav-offcanvas" tabindex="-1" id="mobileNavOffcanvas" aria-labelledby="mobileNavLabel">
+    <div class="offcanvas-header border-bottom">
+      <div class="brand-logo">
+        <div class="logo-icon"><i class="bi bi-trophy-fill"></i></div>
+        <span>Cricket<span class="accent">Live</span></span>
+      </div>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body d-flex flex-column justify-content-between">
+      <div>
+        <ul class="mobile-nav-list">
+          <li><a href="index.html" class="active"><span>Home Match Center</span> <i class="bi bi-chevron-right"></i></a></li>
+          <li><a href="about.html"><span>About Us &amp; Mission</span> <i class="bi bi-chevron-right"></i></a></li>
+          <li><a href="restaurants.html"><span>Fixtures &amp; Tournaments</span> <i class="bi bi-chevron-right"></i></a></li>
+          <li><a href="food-details.html"><span>Live Match Scorecard</span> <i class="bi bi-chevron-right"></i></a></li>
+          <li><a href="contact.html"><span>Fan Support &amp; Ticket Desk</span> <i class="bi bi-chevron-right"></i></a></li>
+        </ul>
+      </div>
+      <div class="pt-3 border-top">
+        <a href="restaurants.html" class="btn-crave-primary w-100 text-center">View Live Fixtures</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide-in Cart Offcanvas Drawer (Match Passes & Tickets) -->
+  <div class="offcanvas offcanvas-end cart-offcanvas" tabindex="-1" id="cartOffcanvas" aria-labelledby="cartOffcanvasLabel">
+    <div class="offcanvas-header border-bottom">
+      <h5 class="offcanvas-title fw-bold" id="cartOffcanvasLabel"><i class="bi bi-ticket-detailed-fill text-success me-2"></i> Your Match Pass Cart</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body d-flex flex-column justify-content-between">
+      <div id="cartItemsContainer">
+        <!-- Dynamic Cart Items Rendered via JS -->
+      </div>
+      <div class="cart-summary-box">
+        <div class="summary-row">
+          <span class="text-muted">Pass Subtotal</span>
+          <span class="fw-bold" id="cartSubtotal">₹798</span>
+        </div>
+        <div class="summary-row">
+          <span class="text-muted">Booking &amp; Platform Fee</span>
+          <span class="fw-bold" id="cartDeliveryFee">₹35</span>
+        </div>
+        <div class="summary-row">
+          <span class="text-muted">Stadium Taxes &amp; GST</span>
+          <span class="fw-bold">₹40</span>
+        </div>
+        <div class="summary-row text-success">
+          <span>Fan Promo Code (CRIC2026)</span>
+          <span class="fw-bold">-₹50</span>
+        </div>
+        <div class="summary-row total">
+          <span>Total Payable</span>
+          <span class="text-success" id="cartTotal">₹823</span>
+        </div>
+        <a href="food-details.html" class="btn-crave-primary w-100 mt-3 text-center">
+          <span>Proceed to Match Center</span>
+          <i class="bi bi-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================================
+       HERO SECTION
+       ================================================================ -->
+  <section class="hero-wrapper">
+    <div class="container">
+      <div class="row align-items-center">
+        <!-- Left Hero Content -->
+        <div class="col-lg-6 mb-5 mb-lg-0 hero-content-box">
+          <span class="badge-crave mb-3">
+            <i class="bi bi-broadcast text-danger"></i> 🔴 LIVE: ICC Men's T20 World Cup 2026 • Super 8
+          </span>
+          <h1>Live Scores.<br>Instant Stats.<br><span style="color:var(--secondary);">Zero Delay.</span></h1>
+          <p class="hero-subtitle">
+            Experience ultra-fast ball-by-ball cricket commentary, pitch heatmaps, team rankings, player statistics, and match highlights for international and franchise leagues worldwide.
+          </p>
+
+          <div class="d-flex flex-wrap gap-3 align-items-center">
+            <a href="restaurants.html" class="btn-crave-primary">
+              <i class="bi bi-activity"></i>
+              <span>Explore Live Matches</span>
+            </a>
+            <a href="food-details.html" class="btn-crave-secondary">
+              <i class="bi bi-clipboard-data"></i>
+              <span>Live Scorecard</span>
+            </a>
+          </div>
+
+          <!-- Search & Venue Bar -->
+          <div class="hero-search-container">
+            <i class="bi bi-search text-success fs-5 ms-2"></i>
+            <input type="text" class="hero-search-input" placeholder="Search matches, teams or venues (e.g. India vs Australia, Wankhede, IPL)">
+            <div class="hero-location-select">
+              <i class="bi bi-geo-alt-fill text-success"></i>
+              <span>Global Venues</span>
+              <i class="bi bi-chevron-down text-muted"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Layered Visual with Floating Badges -->
+        <div class="col-lg-6 hero-visual-container">
+          <div class="hero-main-img-wrapper">
+            <img src="assets/images/hero-cricket.jpg" alt="ICC T20 World Cup Final Live Action" class="hero-main-img">
+          </div>
+
+          <!-- Floating Badge 1 -->
+          <div class="floating-card floating-card-1">
+            <div class="float-icon orange">
+              <i class="bi bi-lightning-charge-fill"></i>
+            </div>
+            <div class="float-text">
+              <h5>0.2s Delay</h5>
+              <p>Ultra-Fast Telemetry</p>
+            </div>
+          </div>
+
+          <!-- Floating Badge 2 -->
+          <div class="floating-card floating-card-2">
+            <div class="float-icon yellow">
+              <i class="bi bi-star-fill"></i>
+            </div>
+            <div class="float-text">
+              <h5>4.9 ★ Rating</h5>
+              <p>5M+ Cricket Fans</p>
+            </div>
+          </div>
+
+          <!-- Floating Badge 3 -->
+          <div class="floating-card floating-card-3">
+            <div class="float-icon green">
+              <i class="bi bi-trophy-fill"></i>
+            </div>
+            <div class="float-text">
+              <h5>350+ Series</h5>
+              <p>World Tournaments</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       FORMATS & TOURNAMENT CATEGORIES SECTION
+       ================================================================ -->
+  <section class="section-padding" style="background:var(--white);">
+    <div class="container">
+      <div class="text-center mb-5">
+        <span class="badge-crave mb-2">Championships &amp; Leagues</span>
+        <h2>Explore Cricket Formats</h2>
+        <p>Follow live scores, schedules, and analytics across all major formats</p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-6 col-md-3 col-lg-3">
+          <a href="restaurants.html" class="category-card">
+            <div class="category-icon-box">🏆</div>
+            <h4 class="category-title">T20 Leagues</h4>
+            <small class="text-muted mt-1">IPL, BBL, PSL, CPL</small>
+          </a>
+        </div>
+        <div class="col-6 col-md-3 col-lg-3">
+          <a href="restaurants.html" class="category-card">
+            <div class="category-icon-box">🏏</div>
+            <h4 class="category-title">Test Series</h4>
+            <small class="text-muted mt-1">Border-Gavaskar, Ashes</small>
+          </a>
+        </div>
+        <div class="col-6 col-md-3 col-lg-3">
+          <a href="restaurants.html" class="category-card">
+            <div class="category-icon-box">🌍</div>
+            <h4 class="category-title">ODI World Cup</h4>
+            <small class="text-muted mt-1">ICC Championships</small>
+          </a>
+        </div>
+        <div class="col-6 col-md-3 col-lg-3">
+          <a href="restaurants.html" class="category-card">
+            <div class="category-icon-box">⚡</div>
+            <h4 class="category-title">Franchise Cups</h4>
+            <small class="text-muted mt-1">The Hundred, SA20</small>
+          </a>
+        </div>
+        <div class="col-6 col-md-3 col-lg-3">
+          <a href="restaurants.html" class="category-card">
+            <div class="category-icon-box">📊</div>
+            <h4 class="category-title">Team Rankings</h4>
+            <small class="text-muted mt-1">ICC Top 10 Men &amp; Women</small>
+          </a>
+        </div>
+        <div class="col-6 col-md-3 col-lg-3">
+          <a href="restaurants.html" class="category-card">
+            <div class="category-icon-box">⭐</div>
+            <h4 class="category-title">Player Stats</h4>
+            <small class="text-muted mt-1">Batting &amp; Bowling MVPs</small>
+          </a>
+        </div>
+        <div class="col-6 col-md-3 col-lg-3">
+          <a href="restaurants.html" class="category-card">
+            <div class="category-icon-box">🎥</div>
+            <h4 class="category-title">Highlights</h4>
+            <small class="text-muted mt-1">4K Wicket &amp; Boundary Clips</small>
+          </a>
+        </div>
+        <div class="col-6 col-md-3 col-lg-3">
+          <a href="restaurants.html" class="category-card">
+            <div class="category-icon-box">🎯</div>
+            <h4 class="category-title">Fantasy Hub</h4>
+            <small class="text-muted mt-1">Win Predictor &amp; Expert XI</small>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       FEATURED MATCHES SECTION
+       ================================================================ -->
+  <section class="section-padding">
+    <div class="container">
+      <div class="d-flex flex-column flex-md-row align-items-md-end justify-content-between mb-5">
+        <div>
+          <span class="badge-crave mb-2">Live &amp; Upcoming</span>
+          <h2>Featured Cricket Matches</h2>
+          <p class="mb-0">High-voltage international encounters and premier franchise rivalries</p>
+        </div>
+        <a href="restaurants.html" class="btn-crave-secondary mt-3 mt-md-0">
+          <span>View All Fixtures</span>
+          <i class="bi bi-arrow-right"></i>
+        </a>
+      </div>
+
+      <div class="row g-4">
+        <!-- Match 1 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="restaurant-card">
+            <div class="restaurant-img-wrapper">
+              <img src="assets/images/match-ind-aus.jpg" alt="India vs Australia T20 World Cup" class="restaurant-img">
+              <span class="card-top-tag">🔴 LIVE OVER 18.2</span>
+              <span class="card-time-tag"><i class="bi bi-geo-alt"></i> MCG, Melbourne</span>
+            </div>
+            <div class="restaurant-body">
+              <div>
+                <div class="restaurant-header">
+                  <h3 class="restaurant-name">India vs Australia</h3>
+                  <span class="rating-badge"><i class="bi bi-trophy-fill"></i> T20 WC</span>
+                </div>
+                <p class="restaurant-cuisine">IND 168/3 (17.2 ov) • Target 195 • CRR 9.69</p>
+              </div>
+              <div>
+                <div class="restaurant-meta">
+                  <span><span class="non-veg-indicator"></span>Super 8 Thriller</span>
+                  <span class="text-success font-weight-bold">Live Stream Active</span>
+                </div>
+                <a href="food-details.html" class="btn-crave-primary w-100 mt-3 text-center">Match Center &amp; Scorecard</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Match 2 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="restaurant-card">
+            <div class="restaurant-img-wrapper">
+              <img src="assets/images/match-eng-sa.jpg" alt="England vs South Africa Test at Lord's" class="restaurant-img">
+              <span class="card-top-tag" style="background:#166534; color:#FACC15;">TEST DAY 4</span>
+              <span class="card-time-tag"><i class="bi bi-geo-alt"></i> Lord's, London</span>
+            </div>
+            <div class="restaurant-body">
+              <div>
+                <div class="restaurant-header">
+                  <h3 class="restaurant-name">England vs South Africa</h3>
+                  <span class="rating-badge"><i class="bi bi-trophy-fill"></i> WTC Test</span>
+                </div>
+                <p class="restaurant-cuisine">ENG 324 &amp; 245 • SA 298 &amp; 112/3 (38 ov)</p>
+              </div>
+              <div>
+                <div class="restaurant-meta">
+                  <span><span class="veg-indicator"></span>Target: 272 Runs</span>
+                  <span class="text-success font-weight-bold">Day 4 Afternoon</span>
+                </div>
+                <a href="food-details.html" class="btn-crave-primary w-100 mt-3 text-center">Match Center &amp; Scorecard</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Match 3 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="restaurant-card">
+            <div class="restaurant-img-wrapper">
+              <img src="assets/images/match-csk-mi.jpg" alt="CSK vs MI Derby at Wankhede" class="restaurant-img">
+              <span class="card-top-tag">IPL DERBY</span>
+              <span class="card-time-tag"><i class="bi bi-geo-alt"></i> Wankhede, Mumbai</span>
+            </div>
+            <div class="restaurant-body">
+              <div>
+                <div class="restaurant-header">
+                  <h3 class="restaurant-name">Chennai vs Mumbai</h3>
+                  <span class="rating-badge"><i class="bi bi-star-fill"></i> 4.9 ★</span>
+                </div>
+                <p class="restaurant-cuisine">CSK 210/4 (20.0 ov) • MI 198/8 (20.0 ov)</p>
+              </div>
+              <div>
+                <div class="restaurant-meta">
+                  <span><span class="non-veg-indicator"></span>CSK won by 12 runs</span>
+                  <span class="text-muted">Highlights Available</span>
+                </div>
+                <a href="food-details.html" class="btn-crave-primary w-100 mt-3 text-center">View Match Summary</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Match 4 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="restaurant-card">
+            <div class="restaurant-img-wrapper">
+              <img src="assets/images/match-nz-pak.jpg" alt="New Zealand vs Pakistan ODI" class="restaurant-img">
+              <span class="card-top-tag">ODI SERIES</span>
+              <span class="card-time-tag"><i class="bi bi-geo-alt"></i> Eden Park, Auckland</span>
+            </div>
+            <div class="restaurant-body">
+              <div>
+                <div class="restaurant-header">
+                  <h3 class="restaurant-name">New Zealand vs Pakistan</h3>
+                  <span class="rating-badge"><i class="bi bi-trophy-fill"></i> 3rd ODI</span>
+                </div>
+                <p class="restaurant-cuisine">NZ 315/6 (50 ov) • PAK 302/9 (50 ov)</p>
+              </div>
+              <div>
+                <div class="restaurant-meta">
+                  <span><span class="veg-indicator"></span>NZ won by 13 runs</span>
+                  <span class="text-success">Series Decider</span>
+                </div>
+                <a href="food-details.html" class="btn-crave-primary w-100 mt-3 text-center">View Match Summary</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Match 5 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="restaurant-card">
+            <div class="restaurant-img-wrapper">
+              <img src="assets/images/match-wi-sl.jpg" alt="West Indies vs Sri Lanka at Kensington Oval" class="restaurant-img">
+              <span class="card-top-tag" style="background:#166534; color:#FACC15;">UPCOMING</span>
+              <span class="card-time-tag"><i class="bi bi-clock"></i> Tonight 7:30 PM</span>
+            </div>
+            <div class="restaurant-body">
+              <div>
+                <div class="restaurant-header">
+                  <h3 class="restaurant-name">West Indies vs Sri Lanka</h3>
+                  <span class="rating-badge"><i class="bi bi-trophy-fill"></i> T20 Series</span>
+                </div>
+                <p class="restaurant-cuisine">Kensington Oval, Barbados • Floodlight Clash</p>
+              </div>
+              <div>
+                <div class="restaurant-meta">
+                  <span><span class="veg-indicator"></span>Toss at 7:00 PM</span>
+                  <span class="text-success">Match Pass Open</span>
+                </div>
+                <a href="food-details.html" class="btn-crave-primary w-100 mt-3 text-center">Pre-Match Analysis</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Match 6 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="restaurant-card">
+            <div class="restaurant-img-wrapper">
+              <img src="assets/images/match-rcb-kkr.jpg" alt="RCB vs KKR IPL Super Over" class="restaurant-img">
+              <span class="card-top-tag">SUPER OVER</span>
+              <span class="card-time-tag"><i class="bi bi-geo-alt"></i> Bengaluru Stadium</span>
+            </div>
+            <div class="restaurant-body">
+              <div>
+                <div class="restaurant-header">
+                  <h3 class="restaurant-name">Bengaluru vs Kolkata</h3>
+                  <span class="rating-badge"><i class="bi bi-star-fill"></i> 4.9 ★</span>
+                </div>
+                <p class="restaurant-cuisine">RCB 224/6 (20 ov) • KKR 224/7 (20 ov)</p>
+              </div>
+              <div>
+                <div class="restaurant-meta">
+                  <span><span class="non-veg-indicator"></span>RCB won in Super Over</span>
+                  <span class="text-muted">Instant Replays</span>
+                </div>
+                <a href="food-details.html" class="btn-crave-primary w-100 mt-3 text-center">View Match Summary</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       HOW IT WORKS SECTION
+       ================================================================ -->
+  <section class="section-padding" style="background:var(--white);">
+    <div class="container">
+      <div class="text-center mb-5">
+        <span class="badge-crave mb-2">Precision Cricket Engine</span>
+        <h2>How CricketLive Works</h2>
+        <p>Get stadium-speed cricket intelligence in 3 seamless steps</p>
+      </div>
+
+      <div class="row g-4">
+        <!-- Step 1 -->
+        <div class="col-md-4">
+          <div class="step-card">
+            <span class="step-num">01</span>
+            <div class="step-icon-wrapper">
+              <i class="bi bi-search"></i>
+            </div>
+            <h4>Pick Match &amp; Tournament</h4>
+            <p>Browse global fixtures, test championships, T20 franchise derbies, and live scorecards.</p>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="col-md-4">
+          <div class="step-card">
+            <span class="step-num">02</span>
+            <div class="step-icon-wrapper">
+              <i class="bi bi-speedometer2"></i>
+            </div>
+            <h4>Real-Time Ball Telemetry</h4>
+            <p>Track pitch heatmaps, wagon wheels, AI win predictors, and expert ball-by-ball insights.</p>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="col-md-4">
+          <div class="step-card">
+            <span class="step-num">03</span>
+            <div class="step-icon-wrapper">
+              <i class="bi bi-bell-fill"></i>
+            </div>
+            <h4>Custom Alerts &amp; Passes</h4>
+            <p>Set instant wicket push alerts, boundary buzzers, and book official digital match passes.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       TOURNAMENT PROMO SECTION
+       ================================================================ -->
+  <section class="section-padding">
+    <div class="container">
+      <div class="promo-banner">
+        <div class="row align-items-center">
+          <div class="col-lg-7 mb-4 mb-lg-0">
+            <span class="badge bg-warning text-dark font-weight-bold mb-3 px-3 py-2 rounded-pill" style="font-size:0.9rem;">
+              🏆 ICC WORLD CUP ALL-ACCESS PASS
+            </span>
+            <h2 class="promo-title">Never Miss A Single Wicket Or Boundary.</h2>
+            <p class="text-white-50 fs-5 mb-4">
+              Get <strong>Ultra-HD Live Scorecard Stream</strong>, multi-camera pitch angles, and 4K instant replays across every World Cup fixture.
+            </p>
+            <a href="restaurants.html" class="btn-crave-primary" style="padding:1rem 2.2rem; font-size:1.1rem;">
+              <span>Explore Tournament Hub</span>
+              <i class="bi bi-trophy ms-1"></i>
+            </a>
+          </div>
+          <div class="col-lg-5 promo-img-wrapper">
+            <img src="assets/images/trophy-cup.jpg" alt="ICC World Cup Championship Trophy" class="promo-img rounded-4 shadow">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       APP / MOBILE EXPERIENCE SECTION
+       ================================================================ -->
+  <section class="section-padding" style="background:var(--white);">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 mb-5 mb-lg-0">
+          <span class="badge-crave mb-3">Mobile Match Telemetry</span>
+          <h2>Cricket Coverage, Engineered for Passionate Fans.</h2>
+          <p class="fs-5 mb-4">
+            Follow live matches on the go with real-time hawk-eye ball tracking, interactive wagon wheels, and AI predictive insights.
+          </p>
+
+          <div class="d-flex flex-column gap-3">
+            <div class="d-flex align-items-start gap-3">
+              <div class="p-2 bg-success bg-opacity-10 text-success rounded-3 fs-4">
+                <i class="bi bi-radar"></i>
+              </div>
+              <div>
+                <h5 class="mb-1">Precision Ball-by-Ball Radar</h5>
+                <p class="mb-0">See exact delivery speeds, swing trajectories, and pitch bounce vectors.</p>
+              </div>
+            </div>
+
+            <div class="d-flex align-items-start gap-3">
+              <div class="p-2 bg-success bg-opacity-10 text-success rounded-3 fs-4">
+                <i class="bi bi-lightning-charge-fill"></i>
+              </div>
+              <div>
+                <h5 class="mb-1">Sub-Second Score Updates</h5>
+                <p class="mb-0">Direct ground socket feeds faster than traditional television broadcast delays.</p>
+              </div>
+            </div>
+
+            <div class="d-flex align-items-start gap-3">
+              <div class="p-2 bg-success bg-opacity-10 text-success rounded-3 fs-4">
+                <i class="bi bi-bell-fill"></i>
+              </div>
+              <div>
+                <h5 class="mb-1">100% Instant Wicket Alerts</h5>
+                <p class="mb-0">Customized push notifications for centuries, sixes, DRS reviews, and wickets.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6 app-mockup-wrapper">
+          <div class="phone-mockup">
+            <div class="phone-screen">
+              <div class="phone-header">
+                <span>9:41</span>
+                <span><i class="bi bi-wifi"></i> <i class="bi bi-battery-full"></i></span>
+              </div>
+              <div class="phone-status-card">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <strong class="text-success">LIVE MATCH 🏏</strong>
+                  <span class="badge bg-warning text-dark">Over 18.2</span>
+                </div>
+                <small class="text-muted d-block mb-2">IND vs AUS • Super 8 • MCG</small>
+                <div class="d-flex justify-content-between fw-bold mb-1">
+                  <span>IND: 168/3</span>
+                  <span class="text-success">Req: 27 in 10b</span>
+                </div>
+                <div class="progress" style="height: 6px;">
+                  <div class="progress-bar" style="width: 85%; background: var(--secondary);"></div>
+                </div>
+              </div>
+              <div class="phone-status-card text-center py-3">
+                <img src="assets/images/player-virat.jpg" alt="Virat Kohli Active Batter" class="rounded-3 mx-auto mb-2" style="width:70px; height:70px; object-fit:cover;">
+                <h6 class="fw-bold mb-0">Virat K. 68* (44b)</h6>
+                <small class="text-muted">Win Predictor: India 64% • Aus 36%</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       TESTIMONIALS SECTION
+       ================================================================ -->
+  <section class="section-padding">
+    <div class="container">
+      <div class="text-center mb-5">
+        <span class="badge-crave mb-2">Fan &amp; Expert Reviews</span>
+        <h2>Loved by 5M+ Cricket Fans</h2>
+        <p>Hear what commentators, fantasy analysts, and fans say about CricketLive</p>
+      </div>
+
+      <div class="row g-4">
+        <!-- Testimonial 1 -->
+        <div class="col-md-4">
+          <div class="testimonial-card">
+            <div>
+              <div class="stars">
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+              </div>
+              <p class="fst-italic">
+                “The speed of the scorecard and the depth of player wagon wheels during T20 matches is phenomenal. CricketLive is the gold standard!”
+              </p>
+            </div>
+            <div class="testimonial-user">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80" alt="Sophia Bennett" class="user-avatar">
+              <div>
+                <h6 class="fw-bold mb-0">Sophia Bennett</h6>
+                <small class="text-muted">Senior Sports Journalist</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="col-md-4">
+          <div class="testimonial-card">
+            <div>
+              <div class="stars">
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+              </div>
+              <p class="fst-italic">
+                “During IPL derbies, the AI win predictor and live commentary updates are lightning fast. I never miss a boundary when traveling.”
+              </p>
+            </div>
+            <div class="testimonial-user">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80" alt="Marcus Chen" class="user-avatar">
+              <div>
+                <h6 class="fw-bold mb-0">Marcus Chen</h6>
+                <small class="text-muted">Cricket Data Analyst</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="col-md-4">
+          <div class="testimonial-card">
+            <div>
+              <div class="stars">
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+              </div>
+              <p class="fst-italic">
+                “The match pass booking and DRS simulation make following Test championships and ODI deciders an absolute pleasure.”
+              </p>
+            </div>
+            <div class="testimonial-user">
+              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80" alt="Emily Rodriguez" class="user-avatar">
+              <div>
+                <h6 class="fw-bold mb-0">Emily Rodriguez</h6>
+                <small class="text-muted">Fantasy League Champion</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       FOOTER
+       ================================================================ -->
+  <footer class="crave-footer">
+    <div class="container">
+      <div class="row g-4">
+        <!-- Brand Info -->
+        <div class="col-lg-4 mb-4 mb-lg-0">
+          <a href="index.html" class="brand-logo text-white mb-3 d-inline-flex">
+            <div class="logo-icon"><i class="bi bi-trophy-fill"></i></div>
+            <span class="text-white">Cricket<span class="accent">Live</span></span>
+          </a>
+          <p class="mb-4">
+            Live Scores. Instant Stats. Zero Delay. Bringing ball-by-ball cricket action and global tournament telemetry straight to your screen in real time.
+          </p>
+          <div class="social-links">
+            <a href="https://instagram.com" target="_blank" class="social-icon" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="https://facebook.com" target="_blank" class="social-icon" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="https://twitter.com" target="_blank" class="social-icon" aria-label="Twitter X"><i class="bi bi-twitter-x"></i></a>
+            <a href="https://youtube.com" target="_blank" class="social-icon" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+          </div>
+        </div>
+
+        <!-- Quick Navigation -->
+        <div class="col-6 col-md-3 col-lg-2">
+          <h5>Navigation</h5>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="restaurants.html">Matches &amp; Hub</a></li>
+            <li><a href="food-details.html">Match Center</a></li>
+            <li><a href="contact.html">Fan Support</a></li>
+          </ul>
+        </div>
+
+        <!-- Cricket Hub -->
+        <div class="col-6 col-md-3 col-lg-3">
+          <h5>Tournament Center</h5>
+          <ul class="footer-links">
+            <li><a href="restaurants.html">ICC T20 World Cup</a></li>
+            <li><a href="restaurants.html">World Test Championship</a></li>
+            <li><a href="food-details.html#liveOrderTracker">Live Match Radar</a></li>
+            <li><a href="contact.html#faqSection">Cricket Rules &amp; FAQs</a></li>
+          </ul>
+        </div>
+
+        <!-- Newsletter -->
+        <div class="col-md-6 col-lg-3">
+          <h5>Stay Match-Ready</h5>
+          <p class="small">Subscribe for instant toss notifications, pitch reports &amp; match previews.</p>
+          <form class="footer-newsletter newsletter-form">
+            <input type="email" placeholder="Enter your email" required>
+            <button type="submit" class="btn btn-crave-primary"><i class="bi bi-send-fill"></i></button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="mb-0">&copy; 2026 CricketLive Global Technologies Inc. All rights reserved. Built with ❤️ for cricket fans.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button type="button" id="backToTopBtn" class="back-to-top-btn" aria-label="Back to Top">
+    <i class="bi bi-arrow-up"></i>
+  </button>
+
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JS -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

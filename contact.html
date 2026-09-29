@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us &amp; Fan Support Desk — CricketLive</title>
+  <meta name="description" content="Contact CricketLive 24/7 fan support, submit match pass tickets, track live support resolution, and view global cricket headquarters.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  
+  <!-- Bootstrap 5 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- ================================================================
+       HEADER & NAVIGATION
+       ================================================================ -->
+  <header class="crave-header">
+    <div class="container">
+      <nav class="crave-navbar">
+        <!-- Logo -->
+        <a href="index.html" class="brand-logo">
+          <div class="logo-icon">
+            <i class="bi bi-trophy-fill"></i>
+          </div>
+          <span>Cricket<span class="accent">Live</span></span>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <ul class="crave-nav-links crave-nav-links-desktop">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="restaurants.html">Matches &amp; Hub</a></li>
+          <li><a href="food-details.html">Match Center</a></li>
+          <li><a href="contact.html" class="active">Contact Us</a></li>
+        </ul>
+
+        <!-- Right Header Actions -->
+        <div class="header-actions">
+          <button class="cart-icon-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#cartOffcanvas" aria-label="View Match Passes">
+            <i class="bi bi-ticket-perforated-fill"></i>
+            <span class="cart-badge">2</span>
+          </button>
+
+          <a href="restaurants.html" class="btn-crave-primary d-none d-lg-inline-flex">
+            <span>Explore Matches</span>
+            <i class="bi bi-arrow-right-short fs-5"></i>
+          </a>
+
+          <!-- Mobile Hamburger Toggle (Right Aligned) -->
+          <button class="mobile-toggle-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileNavOffcanvas" aria-label="Toggle Navigation">
+            <i class="bi bi-list"></i>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Offcanvas Drawer -->
+  <div class="offcanvas offcanvas-end mobile-nav-offcanvas" tabindex="-1" id="mobileNavOffcanvas">
+    <div class="offcanvas-header border-bottom">
+      <div class="brand-logo">
+        <div class="logo-icon"><i class="bi bi-trophy-fill"></i></div>
+        <span>Cricket<span class="accent">Live</span></span>
+      </div>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body d-flex flex-column justify-content-between">
+      <div>
+        <ul class="mobile-nav-list">
+          <li><a href="index.html"><span>Home Match Center</span> <i class="bi bi-chevron-right"></i></a></li>
+          <li><a href="about.html"><span>About Us &amp; Mission</span> <i class="bi bi-chevron-right"></i></a></li>
+          <li><a href="restaurants.html"><span>Fixtures &amp; Tournaments</span> <i class="bi bi-chevron-right"></i></a></li>
+          <li><a href="food-details.html"><span>Live Match Scorecard</span> <i class="bi bi-chevron-right"></i></a></li>
+          <li><a href="contact.html" class="active"><span>Fan Support &amp; Ticket Desk</span> <i class="bi bi-chevron-right"></i></a></li>
+        </ul>
+      </div>
+      <div class="pt-3 border-top">
+        <a href="restaurants.html" class="btn-crave-primary w-100 text-center">View Live Fixtures</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide-in Cart Offcanvas Drawer -->
+  <div class="offcanvas offcanvas-end cart-offcanvas" tabindex="-1" id="cartOffcanvas">
+    <div class="offcanvas-header border-bottom">
+      <h5 class="offcanvas-title fw-bold"><i class="bi bi-ticket-detailed-fill text-success me-2"></i> Your Match Pass Cart</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body d-flex flex-column justify-content-between">
+      <div id="cartItemsContainer"></div>
+      <div class="cart-summary-box">
+        <div class="summary-row">
+          <span class="text-muted">Pass Subtotal</span>
+          <span class="fw-bold" id="cartSubtotal">₹798</span>
+        </div>
+        <div class="summary-row">
+          <span class="text-muted">Booking &amp; Platform Fee</span>
+          <span class="fw-bold" id="cartDeliveryFee">₹35</span>
+        </div>
+        <div class="summary-row">
+          <span class="text-muted">Stadium Taxes &amp; GST</span>
+          <span class="fw-bold">₹40</span>
+        </div>
+        <div class="summary-row text-success">
+          <span>Fan Promo Code (CRIC2026)</span>
+          <span class="fw-bold">-₹50</span>
+        </div>
+        <div class="summary-row total">
+          <span>Total Payable</span>
+          <span class="text-success" id="cartTotal">₹823</span>
+        </div>
+        <a href="food-details.html" class="btn-crave-primary w-100 mt-3 text-center">
+          <span>Proceed to Match Center</span>
+          <i class="bi bi-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================================
+       CONTACT PAGE HERO SECTION
+       ================================================================ -->
+  <section class="hero-wrapper page-hero-wrapper">
+    <div class="container">
+      <div class="row align-items-center">
+        <!-- Left Hero Content -->
+        <div class="col-lg-6 mb-5 mb-lg-0 hero-content-box">
+          <span class="badge-crave mb-3">
+            <i class="bi bi-headset text-success"></i> 24/7 Match Support &amp; Fan Desk
+          </span>
+          <h1 class="page-hero-title">Contact Us &amp; <br><span style="color:var(--secondary);">Fan Support Desk</span></h1>
+          <p class="hero-subtitle">
+            Need help with your match pass, live stream access, fantasy scoring, or media accreditation? Submit a ticket, chat with a live sports analyst, or find our office location below.
+          </p>
+
+          <!-- Interactive Search Bar -->
+          <div class="hero-search-container mt-4" style="max-width: 100%;">
+            <i class="bi bi-search text-success fs-5 ms-2"></i>
+            <input type="text" class="hero-search-input" placeholder="Search support articles, cricket rules, or enter Match Pass ID...">
+            <button class="btn btn-crave-primary rounded-pill px-4 me-1 d-none d-sm-inline-flex">Search</button>
+          </div>
+
+          <!-- Quick Navigation Chips -->
+          <div class="d-flex flex-wrap align-items-center gap-2 mt-3 pt-1">
+            <span class="small fw-bold text-muted me-1">Jump to:</span>
+            <a href="#ticketSection" class="quick-tag-chip"><i class="bi bi-ticket-perforated-fill text-success"></i> Submit Ticket</a>
+            <a href="#activeTicketSection" class="quick-tag-chip"><i class="bi bi-clock-history text-warning"></i> Ticket Details</a>
+            <a href="#contactMapSection" class="quick-tag-chip"><i class="bi bi-geo-alt-fill text-primary"></i> Stadium Hub Map</a>
+            <a href="#socialMediaSection" class="quick-tag-chip"><i class="bi bi-share-fill text-success"></i> Social Channels</a>
+          </div>
+        </div>
+
+        <!-- Right Visual Graphic -->
+        <div class="col-lg-6 hero-visual-container">
+          <div class="hero-main-img-wrapper">
+            <img src="assets/images/match-hundred.jpg" alt="Lord's Cricket Ground Stadium & Broadcast Desk" class="hero-main-img">
+          </div>
+
+          <!-- Floating Badges -->
+          <div class="floating-card floating-card-1">
+            <div class="float-icon orange">
+              <i class="bi bi-lightning-charge-fill"></i>
+            </div>
+            <div class="float-text">
+              <h5>&lt; 15 Mins Ticket</h5>
+              <p>Guaranteed Resolution</p>
+            </div>
+          </div>
+
+          <div class="floating-card floating-card-2">
+            <div class="float-icon green">
+              <i class="bi bi-shield-check"></i>
+            </div>
+            <div class="float-text">
+              <h5>100% Protection</h5>
+              <p>Verified Match Passes</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       DIRECT CONTACT CHANNELS BAR
+       ================================================================ -->
+  <section class="section-padding py-4 bg-white border-bottom">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-sm-6 col-lg-3">
+          <div class="p-4 rounded-4 border bg-light h-100 text-center">
+            <i class="bi bi-telephone-inbound-fill text-success fs-1 mb-2"></i>
+            <h5 class="fw-bold">Fan Hotline</h5>
+            <p class="small text-muted mb-2">24/7 Match Pass Assistance</p>
+            <a href="tel:+18005552728" class="fw-bold text-dark">+1 (800) 555-CRIC</a>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+          <div class="p-4 rounded-4 border bg-light h-100 text-center">
+            <i class="bi bi-envelope-check-fill text-success fs-1 mb-2"></i>
+            <h5 class="fw-bold">Match Desk Email</h5>
+            <p class="small text-muted mb-2">For telemetry &amp; ticket inquiries</p>
+            <a href="mailto:support@cricketlive.com" class="fw-bold text-success">support@cricketlive.com</a>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+          <div class="p-4 rounded-4 border bg-light h-100 text-center">
+            <i class="bi bi-geo-alt-fill text-success fs-1 mb-2"></i>
+            <h5 class="fw-bold">Tournament HQ</h5>
+            <p class="small text-muted mb-2">Global Media &amp; Sports Hub</p>
+            <span class="fw-bold text-dark">Brunton Ave, MCG, Melbourne</span>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+          <div class="p-4 rounded-4 border bg-light h-100 text-center">
+            <i class="bi bi-chat-dots-fill text-success fs-1 mb-2"></i>
+            <h5 class="fw-bold">Live Match Chat</h5>
+            <p class="small text-muted mb-2">Average response under 1 min</p>
+            <button class="btn btn-sm btn-crave-primary px-3 rounded-pill" data-bs-toggle="modal" data-bs-target="#liveChatModal">Start Chat Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       SUPPORT TICKET & TICKET DETAIL TRACKER SECTION
+       ================================================================ -->
+  <section class="section-padding" id="ticketSection">
+    <div class="container">
+      <div class="text-center max-w-700 mx-auto mb-5">
+        <span class="badge-crave mb-2">Fan Resolution Hub</span>
+        <h2>Support Ticket &amp; Live Tracking</h2>
+        <p>Submit a new inquiry or track status updates on your open match pass ticket in real time.</p>
+      </div>
+
+      <div class="row g-4 align-items-start">
+        <!-- LEFT: SUBMIT SUPPORT TICKET FORM -->
+        <div class="col-lg-7">
+          <div class="bg-white p-4 p-md-5 rounded-4 border shadow-sm h-100">
+            <div class="d-flex align-items-center justify-content-between mb-4 pb-2 border-bottom">
+              <div>
+                <h4 class="fw-bold mb-1"><i class="bi bi-ticket-perforated-fill text-success me-2"></i>Submit Support Ticket</h4>
+                <p class="small text-muted mb-0">Fill out your details to open a tracked inquiry with our tournament desk team.</p>
+              </div>
+              <span class="badge bg-success bg-opacity-10 text-success px-3 py-2 rounded-pill fw-bold">Open Ticket</span>
+            </div>
+
+            <form id="contactHelpForm">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label fw-bold small">Your Full Name</label>
+                  <input type="text" id="ticketUserName" class="form-control py-2" placeholder="e.g. Alex Johnson" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label fw-bold small">Email Address</label>
+                  <input type="email" id="ticketUserEmail" class="form-control py-2" placeholder="alex@example.com" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label fw-bold small">Match Pass ID (Optional)</label>
+                  <input type="text" id="ticketOrderId" class="form-control py-2" placeholder="#CRIC-984210">
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label fw-bold small">Issue Category</label>
+                  <select id="ticketCategorySelect" class="form-select py-2" required>
+                    <option value="">Select Category</option>
+                    <option value="Match Streaming">Live Stream &amp; 4K Feed Audio</option>
+                    <option value="Pass Booking">Digital Match Pass &amp; QR Delivery</option>
+                    <option value="Fantasy Scoring">Fantasy Points &amp; Telemetry Bug</option>
+                    <option value="Media Inquiry">Press &amp; Media Accreditation</option>
+                  </select>
+                </div>
+
+                <!-- Priority Selector -->
+                <div class="col-12">
+                  <label class="form-label fw-bold small d-block">Urgency Level</label>
+                  <div class="d-flex flex-wrap gap-2" id="priorityPillContainer">
+                    <button type="button" class="priority-pill-btn" data-priority="Low">Low</button>
+                    <button type="button" class="priority-pill-btn active" data-priority="Medium">Medium</button>
+                    <button type="button" class="priority-pill-btn" data-priority="High">High Priority</button>
+                    <button type="button" class="priority-pill-btn" data-priority="Urgent">🔥 Live Match Urgent</button>
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <label class="form-label fw-bold small">Subject</label>
+                  <input type="text" id="ticketSubjectInput" class="form-control py-2" placeholder="Brief summary of your inquiry..." required>
+                </div>
+
+                <div class="col-12">
+                  <label class="form-label fw-bold small">Detailed Message</label>
+                  <textarea id="ticketMsgInput" class="form-control" rows="4" placeholder="Provide complete details about your match pass or stream issue..." required></textarea>
+                </div>
+
+                <!-- File Attachment Simulation -->
+                <div class="col-12">
+                  <div class="border rounded-3 p-3 bg-light text-center">
+                    <i class="bi bi-cloud-arrow-up-fill text-success fs-3 mb-1"></i>
+                    <p class="small text-muted mb-1">Attach match pass receipt or screenshot (Optional)</p>
+                    <input type="file" class="d-none" id="ticketFileInput">
+                    <button type="button" class="btn btn-sm btn-outline-secondary rounded-pill px-3" onclick="document.getElementById('ticketFileInput').click()">
+                      <i class="bi bi-paperclip me-1"></i> Choose File
+                    </button>
+                  </div>
+                </div>
+
+                <div class="col-12 pt-2">
+                  <button type="submit" class="btn btn-crave-primary w-100 py-3 fs-6">
+                    <span>Submit Ticket Now</span>
+                    <i class="bi bi-send-fill ms-2"></i>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- RIGHT: ACTIVE TICKET DETAIL TRACKER -->
+        <div class="col-lg-5" id="activeTicketSection">
+          <div class="ticket-detail-card p-4 p-md-4">
+            <div class="d-flex align-items-center justify-content-between pb-3 border-bottom mb-3">
+              <div>
+                <span class="ticket-header-badge">TICKET #CRIC-894210</span>
+                <h5 class="fw-bold mb-0 mt-2">Active Ticket Detail</h5>
+              </div>
+              <span class="badge bg-warning text-dark px-3 py-2 rounded-pill fw-bold">In Progress</span>
+            </div>
+
+            <!-- Ticket Meta Information -->
+            <div class="bg-light p-3 rounded-3 mb-3 border">
+              <div class="row g-2 small">
+                <div class="col-6">
+                  <span class="text-muted d-block">Submitted By:</span>
+                  <strong class="text-dark">Alex Johnson</strong>
+                </div>
+                <div class="col-6">
+                  <span class="text-muted d-block">Assigned Specialist:</span>
+                  <strong class="text-success">Sarah M. (Match Lead)</strong>
+                </div>
+                <div class="col-6">
+                  <span class="text-muted d-block">Category:</span>
+                  <strong class="text-dark">Live Stream 4K Feed</strong>
+                </div>
+                <div class="col-6">
+                  <span class="text-muted d-block">Est. Resolution:</span>
+                  <strong class="text-success">&lt; 10 Mins</strong>
+                </div>
+              </div>
+            </div>
+
+            <!-- Subject & Description -->
+            <div class="mb-3">
+              <h6 class="fw-bold mb-1" id="ticketDisplaySubject">Subject: 4K Stream Audio Sync (#CRIC-984210)</h6>
+              <p class="small text-muted mb-0">"The audio feed on the IND vs AUS Super 8 match had a 2-second delay on the Hindi commentary stream."</p>
+            </div>
+
+            <!-- Ticket Activity Conversation Thread -->
+            <div class="ticket-activity-box mb-3" style="max-height: 260px; overflow-y: auto;" id="ticketActivityTimeline">
+              <!-- Message 1: Fan -->
+              <div class="ticket-msg-bubble">
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                  <strong class="small text-dark">Alex Johnson (Cricket Fan)</strong>
+                  <span class="text-muted" style="font-size:0.7rem;">Today, 11:15 AM</span>
+                </div>
+                <p class="small mb-0 text-secondary">Hi team, pass #CRIC-984210 stream has a minor audio delay during over 16.</p>
+              </div>
+
+              <!-- Message 2: Support Lead -->
+              <div class="ticket-msg-bubble agent">
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                  <strong class="small text-success"><i class="bi bi-check-circle-fill me-1"></i> Sarah Miller (Match Desk Lead)</strong>
+                  <span class="text-muted" style="font-size:0.7rem;">Today, 11:22 AM</span>
+                </div>
+                <p class="small mb-0 text-dark">Hello Alex! We have re-synced your stream server to the Melbourne low-latency edge CDN. The commentary feed is now locked in real time.</p>
+              </div>
+            </div>
+
+            <!-- Add Reply Input for Active Ticket -->
+            <form id="ticketReplyForm">
+              <div class="input-group">
+                <input type="text" id="ticketReplyInput" class="form-control py-2 text-sm" placeholder="Add an update to this match ticket..." required>
+                <button type="submit" class="btn btn-crave-primary px-3">
+                  <i class="bi bi-reply-fill"></i> Reply
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       INTERACTIVE HEADQUARTERS MAP SECTION
+       ================================================================ -->
+  <section class="section-padding bg-white" id="contactMapSection">
+    <div class="container">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-4">
+          <span class="badge-crave mb-2"><i class="bi bi-geo-alt-fill"></i> Tournament Hub</span>
+          <h2 class="fw-bold mb-3">Visit Our Melbourne Headquarters</h2>
+          <p class="text-muted mb-4">
+            Our central sports analytics, broadcast telemetry, and engineering headquarters is located right next to the iconic Melbourne Cricket Ground.
+          </p>
+
+          <div class="d-flex flex-column gap-3 mb-4">
+            <div class="d-flex align-items-start gap-3">
+              <div class="bg-success bg-opacity-10 text-success rounded-circle p-2 fs-5">
+                <i class="bi bi-building"></i>
+              </div>
+              <div>
+                <strong class="d-block text-dark">CricketLive Sports Lab</strong>
+                <span class="small text-muted">Brunton Ave, MCG Precinct, Melbourne, VIC 3002</span>
+              </div>
+            </div>
+
+            <div class="d-flex align-items-start gap-3">
+              <div class="bg-success bg-opacity-10 text-success rounded-circle p-2 fs-5">
+                <i class="bi bi-clock"></i>
+              </div>
+              <div>
+                <strong class="d-block text-dark">Match Desk Hours</strong>
+                <span class="small text-muted">Telemetry Desk: 24/7 | Office: Mon–Fri, 9am–6pm</span>
+              </div>
+            </div>
+          </div>
+
+          <a href="https://maps.google.com" target="_blank" class="btn btn-crave-primary px-4 py-3 rounded-pill">
+            <i class="bi bi-signpost-turn-right-fill me-2"></i> Get Directions on Maps
+          </a>
+        </div>
+
+        <!-- Google Map Embed Column -->
+        <div class="col-lg-8">
+          <div class="contact-map-wrapper">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509374!2d144.9818274765625!3d-37.81996687197495!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642e8876a3e1b%3A0xb5a0bfef8a9f6d32!2sMelbourne%20Cricket%20Ground!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade" 
+              title="CricketLive Headquarters Map Location">
+            </iframe>
+
+            <!-- Map Floating Card -->
+            <div class="map-overlay-card d-none d-sm-block">
+              <div class="d-flex align-items-center gap-2 mb-1">
+                <i class="bi bi-trophy-fill text-success fs-5"></i>
+                <strong class="text-dark">CricketLive MCG Hub</strong>
+              </div>
+              <p class="small text-muted mb-0">Brunton Ave, East Melbourne, Victoria</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       SOCIAL MEDIA & COMMUNITY CHANNELS SECTION
+       ================================================================ -->
+  <section class="section-padding" id="socialMediaSection" style="background:var(--bg-warm);">
+    <div class="container">
+      <div class="text-center max-w-700 mx-auto mb-5">
+        <span class="badge-crave mb-2"><i class="bi bi-share-fill"></i> Stay Connected</span>
+        <h2>Follow CricketLive on Social Media</h2>
+        <p>Join over 10 million fans across our official community channels for daily toss alerts, post-match analysis, and instant replay clips.</p>
+      </div>
+
+      <div class="row g-4">
+        <!-- Instagram Card -->
+        <div class="col-6 col-md-4 col-lg-2">
+          <a href="https://instagram.com" target="_blank" class="social-brand-card instagram text-decoration-none">
+            <div class="social-brand-icon">
+              <i class="bi bi-instagram"></i>
+            </div>
+            <h6 class="fw-bold mb-1">Instagram</h6>
+            <span class="small text-muted">@CricketLiveHQ</span>
+            <span class="badge bg-danger bg-opacity-10 text-danger mt-2 px-2 py-1 rounded-pill small">2.5M Fans</span>
+          </a>
+        </div>
+
+        <!-- Facebook Card -->
+        <div class="col-6 col-md-4 col-lg-2">
+          <a href="https://facebook.com" target="_blank" class="social-brand-card facebook text-decoration-none">
+            <div class="social-brand-icon">
+              <i class="bi bi-facebook"></i>
+            </div>
+            <h6 class="fw-bold mb-1">Facebook</h6>
+            <span class="small text-muted">/CricketLiveApp</span>
+            <span class="badge bg-primary bg-opacity-10 text-primary mt-2 px-2 py-1 rounded-pill small">1.8M Likes</span>
+          </a>
+        </div>
+
+        <!-- Twitter / X Card -->
+        <div class="col-6 col-md-4 col-lg-2">
+          <a href="https://twitter.com" target="_blank" class="social-brand-card twitter text-decoration-none">
+            <div class="social-brand-icon">
+              <i class="bi bi-twitter-x"></i>
+            </div>
+            <h6 class="fw-bold mb-1">Twitter / X</h6>
+            <span class="small text-muted">@CricketLiveScore</span>
+            <span class="badge bg-dark bg-opacity-10 text-dark mt-2 px-2 py-1 rounded-pill small">Live Alerts</span>
+          </a>
+        </div>
+
+        <!-- YouTube Card -->
+        <div class="col-6 col-md-4 col-lg-2">
+          <a href="https://youtube.com" target="_blank" class="social-brand-card youtube text-decoration-none">
+            <div class="social-brand-icon">
+              <i class="bi bi-youtube"></i>
+            </div>
+            <h6 class="fw-bold mb-1">YouTube</h6>
+            <span class="small text-muted">Cricket Highlights HD</span>
+            <span class="badge bg-danger bg-opacity-10 text-danger mt-2 px-2 py-1 rounded-pill small">Match Replays</span>
+          </a>
+        </div>
+
+        <!-- LinkedIn Card -->
+        <div class="col-6 col-md-4 col-lg-2">
+          <a href="https://linkedin.com" target="_blank" class="social-brand-card linkedin text-decoration-none">
+            <div class="social-brand-icon">
+              <i class="bi bi-linkedin"></i>
+            </div>
+            <h6 class="fw-bold mb-1">LinkedIn</h6>
+            <span class="small text-muted">CricketLive Tech</span>
+            <span class="badge bg-success bg-opacity-10 text-success mt-2 px-2 py-1 rounded-pill small">Sports AI</span>
+          </a>
+        </div>
+
+        <!-- WhatsApp Card -->
+        <div class="col-6 col-md-4 col-lg-2">
+          <a href="https://whatsapp.com" target="_blank" class="social-brand-card whatsapp text-decoration-none">
+            <div class="social-brand-icon">
+              <i class="bi bi-whatsapp"></i>
+            </div>
+            <h6 class="fw-bold mb-1">WhatsApp</h6>
+            <span class="small text-muted">+1 800 555-CRIC</span>
+            <span class="badge bg-success bg-opacity-10 text-success mt-2 px-2 py-1 rounded-pill small">Ball Buzzers</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       FAQ SECTION ACCORDION
+       ================================================================ -->
+  <section class="section-padding bg-white" id="faqSection">
+    <div class="container">
+      <div class="text-center max-w-700 mx-auto mb-5">
+        <span class="badge-crave mb-2">Cricket FAQs</span>
+        <h2>Frequently Asked Questions</h2>
+        <p>Everything you need to know about live scorecards, match passes, and telemetry</p>
+      </div>
+
+      <div class="accordion faq-accordion max-w-800 mx-auto" id="craveFaqAccordion">
+        <!-- Q1 -->
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+              How fast are live scores and ball-by-ball telemetry updated?
+            </button>
+          </h2>
+          <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#craveFaqAccordion">
+            <div class="accordion-body text-muted">
+              Our ball-tracking telemetry streams directly from on-ground optical cameras and radar sensors with under 0.2-second latency, delivering scores faster than traditional broadcast television feeds.
+            </div>
+          </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+              What should I do if my match pass or 4K live stream experiences buffering?
+            </button>
+          </h2>
+          <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#craveFaqAccordion">
+            <div class="accordion-body text-muted">
+              Submit a support ticket above with your Match Pass ID, or open a 24/7 Live Chat. Our tournament desk automatically re-routes your stream to the nearest regional low-latency edge server.
+            </div>
+          </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+              How does the AI Win Predictor calculate real-time match probabilities?
+            </button>
+          </h2>
+          <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#craveFaqAccordion">
+            <div class="accordion-body text-muted">
+              Our machine learning models analyze 15+ years of ball-by-ball historical match data, current pitch conditions, weather variables, DLS par curves, and batter vs bowler head-to-head records after every single delivery.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       LIVE CHAT MODAL
+       ================================================================ -->
+  <div class="modal fade" id="liveChatModal" tabindex="-1" aria-labelledby="liveChatModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content rounded-4 border-0 shadow-lg">
+        <div class="modal-header border-bottom py-3" style="background: var(--primary); color: var(--white);">
+          <div class="d-flex align-items-center gap-2">
+            <div class="rounded-circle p-2 bg-white text-success d-flex align-items-center justify-content-center" style="width:36px; height:36px;">
+              <i class="bi bi-trophy-fill"></i>
+            </div>
+            <div>
+              <h6 class="modal-title fw-bold mb-0 text-white" id="liveChatModalLabel">CricketLive Match Desk</h6>
+              <small class="text-white-50" style="font-size:0.75rem;">Online • Instant Response</small>
+            </div>
+          </div>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-3" id="chatMessagesBody" style="min-height: 300px; max-height: 380px;">
+          <div class="d-flex align-items-start gap-2 mb-3">
+            <div class="text-white rounded-circle d-flex align-items-center justify-content-center flex-shrink-0" style="width:36px; height:36px; background: var(--primary);">
+              <i class="bi bi-headset"></i>
+            </div>
+            <div class="bg-light p-3 rounded-4 border" style="max-width: 80%;">
+              <strong class="d-block mb-1 text-dark" style="font-size:0.85rem;">Sarah Miller (Match Desk Lead)</strong>
+              Welcome to CricketLive Fan Support! How can I assist you with your match pass, live scores, or tournament stream today?
+              <div class="mt-1 text-muted" style="font-size:0.7rem;">Just now</div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer border-top p-2 bg-light">
+          <div class="input-group">
+            <input type="text" id="chatMsgInput" class="form-control border-0 bg-white" placeholder="Type your message here...">
+            <button class="btn btn-crave-primary px-3" id="sendChatMsgBtn">
+              <i class="bi bi-send-fill"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================================
+       FOOTER
+       ================================================================ -->
+  <footer class="crave-footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4 mb-4 mb-lg-0">
+          <a href="index.html" class="brand-logo text-white mb-3 d-inline-flex">
+            <div class="logo-icon"><i class="bi bi-trophy-fill"></i></div>
+            <span class="text-white">Cricket<span class="accent">Live</span></span>
+          </a>
+          <p class="mb-4">
+            Live Scores. Instant Stats. Zero Delay. Bringing ball-by-ball cricket action and global tournament telemetry straight to your screen in real time.
+          </p>
+          <div class="social-links">
+            <a href="https://instagram.com" target="_blank" class="social-icon"><i class="bi bi-instagram"></i></a>
+            <a href="https://facebook.com" target="_blank" class="social-icon"><i class="bi bi-facebook"></i></a>
+            <a href="https://twitter.com" target="_blank" class="social-icon"><i class="bi bi-twitter-x"></i></a>
+            <a href="https://youtube.com" target="_blank" class="social-icon"><i class="bi bi-youtube"></i></a>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-3 col-lg-2">
+          <h5>Navigation</h5>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="restaurants.html">Matches &amp; Hub</a></li>
+            <li><a href="food-details.html">Match Center</a></li>
+            <li><a href="contact.html">Fan Support</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-md-3 col-lg-3">
+          <h5>Tournament Center</h5>
+          <ul class="footer-links">
+            <li><a href="contact.html#ticketSection">Submit Support Ticket</a></li>
+            <li><a href="contact.html#activeTicketSection">Active Ticket Details</a></li>
+            <li><a href="contact.html#contactMapSection">Melbourne Stadium HQ</a></li>
+            <li><a href="contact.html#faqSection">Cricket Rules &amp; FAQs</a></li>
+          </ul>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+          <h5>Stay Match-Ready</h5>
+          <p class="small">Subscribe for instant toss notifications, pitch reports &amp; match previews.</p>
+          <form class="footer-newsletter newsletter-form">
+            <input type="email" placeholder="Enter your email" required>
+            <button type="submit" class="btn btn-crave-primary"><i class="bi bi-send-fill"></i></button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="mb-0">&copy; 2026 CricketLive Global Technologies Inc. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button type="button" id="backToTopBtn" class="back-to-top-btn" aria-label="Back to Top">
+    <i class="bi bi-arrow-up"></i>
+  </button>
+
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JS -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
