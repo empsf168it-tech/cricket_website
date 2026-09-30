@@ -1314,6 +1314,21 @@ img {
   }
 }
 
+.commentary-desk-card {
+  background: var(--bg-warm) !important;
+  border: 1px solid var(--border-light) !important;
+  border-radius: var(--radius-md);
+  width: 100%;
+}
+
+.commentary-desk-card .btn-crave-primary,
+.commentary-desk-card .btn-crave-secondary {
+  padding: 0.55rem 1.25rem !important;
+  font-size: 0.92rem !important;
+  white-space: nowrap !important;
+  flex: 0 0 auto;
+}
+
 /* ================================================================
    CONTACT & HELP CENTER STYLES
    ================================================================ */
